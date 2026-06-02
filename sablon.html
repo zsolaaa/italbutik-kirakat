@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Ital Butik – Hirdetés sablon</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap');
+
+  :root {
+    --black:  oklch(12% 0.01 70);
+    --orange: oklch(62% 0.14 55);
+    --cream:  oklch(95% 0.015 75);
+    --warm-gray: oklch(52% 0.025 70);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    background: var(--cream);
+    font-family: 'Barlow', 'Arial Narrow', sans-serif;
+  }
+
+  /* ── ANIMÁCIÓK ───────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.88); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── HEADER ─────────────────────────────────── */
+  .header {
+    background: var(--black);
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: fadeIn 0.6s ease-out both;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--orange);
+  }
+
+  .header img {
+    height: 120px;
+    width: auto;
+  }
+
+  /* ── PRODUCT IMAGE AREA ──────────────────────── */
+  .product-wrap {
+    width: 100%;
+    height: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 45%, oklch(62% 0.14 55 / 0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 75% 75%, oklch(12% 0.01 70 / 0.04) 0%, transparent 50%);
+  }
+
+  .product-img {
+    max-width: 840px;
+    max-height: 1020px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 48px 96px oklch(12% 0.01 70 / 0.22));
+    animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  /* ── PRICE SECTION ───────────────────────────── */
+  .price-section {
+    background: var(--cream);
+    width: 100%;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 80px 56px;
+    position: relative;
+  }
+
+  .product-name {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 900;
+    font-size: 100px;
+    line-height: 0.95;
+    color: var(--black);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -1px;
+    margin-bottom: 36px;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  }
+
+  .product-name span {
+    color: var(--orange);
+  }
+
+  .price-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+    line-height: 1;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+  }
+
+  .currency {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    color: var(--orange);
+    margin-top: 20px;
+  }
+
+  .price-amount {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 900;
+    font-size: 210px;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: -8px;
+  }
+
+  .unit-price {
+    font-family: 'Barlow', 'Arial', sans-serif;
+    font-weight: 500;
+    font-size: 38px;
+    color: var(--warm-gray);
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 0.3px;
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" alt="Ital Butik 0-24">
+  </div>
+
+  <!-- PRODUCT IMAGE -->
+  <div class="product-wrap">
+    <!-- ✏️ Cseréld ki a src-t a termék képére -->
+    <img class="product-img" src="termek.webp" alt="Termék">
+  </div>
+
+  <!-- PRICE SECTION -->
+  <div class="price-section">
+
+    <!-- ✏️ Termék neve — ha hosszú, törd két sorba <br>-vel -->
+    <!-- ✏️ A <span> taggel narancssárga lesz a szó -->
+    <div class="product-name">DAB<br><span>Dortmunder Lager</span></div>
+
+    <!-- ✏️ Ár -->
+    <div class="price-row">
+      <div class="currency">Ft</div>
+      <div class="price-amount">599</div>
+    </div>
+
+    <!-- ✏️ Egységár -->
+    <div class="unit-price">0,5 l · 1 198 Ft/l</div>
+
+  </div>
+
+</body>
+</html>
